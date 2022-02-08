@@ -30,9 +30,7 @@ class RestaurantTest {
         LocalTime now = LocalTime.parse("11:00:00");
         LocalTime openingTime = restaurant.openingTime;
         LocalTime closingTime = restaurant.closingTime;
-
-        boolean isOpen = now.isAfter(openingTime) && now.isBefore(closingTime);
-        assertEquals(isOpen, restaurant.isRestaurantOpen());
+        assertTrue(now.isAfter(openingTime) && now.isBefore(closingTime));
     }
 
     @Test
