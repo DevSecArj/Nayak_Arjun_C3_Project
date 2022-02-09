@@ -1,15 +1,11 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith(MockitoExtension.class)
+
 class RestaurantTest {
     Restaurant restaurant;
     //REFACTOR ALL THE REPEATED LINES OF CODE
@@ -28,19 +24,14 @@ class RestaurantTest {
     public void is_restaurant_open_should_return_true_if_time_is_between_opening_and_closing_time(){
         //WRITE UNIT TEST CASE HERE
         LocalTime now = LocalTime.parse("11:00:00");
-        LocalTime openingTime = restaurant.openingTime;
-        LocalTime closingTime = restaurant.closingTime;
-        assertTrue(now.isAfter(openingTime) && now.isBefore(closingTime));
+        assertTrue(now.isAfter( restaurant.openingTime) && now.isBefore(restaurant.closingTime));
     }
 
     @Test
     public void is_restaurant_open_should_return_false_if_time_is_outside_opening_and_closing_time(){
         //WRITE UNIT TEST CASE HERE
-        LocalTime openingTime = restaurant.openingTime;
-        LocalTime closingTime = restaurant.closingTime;
         LocalTime now = LocalTime.parse("23:00:00");
-        assertFalse(now.isAfter(openingTime) && now.isBefore(closingTime));
-
+        assertFalse(now.isAfter(restaurant.openingTime) && now.isBefore(restaurant.closingTime));
     }
 
     //<<<<<<<<<<<<<<<<<<<<<<<<<OPEN/CLOSED>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -65,4 +56,5 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 }
