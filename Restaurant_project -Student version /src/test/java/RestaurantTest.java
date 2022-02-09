@@ -61,7 +61,7 @@ class RestaurantTest {
     }
 
     //<<<<<<<<<<<<TDD>>>>>>>>>>>>>
-    //Failing test cases for TDD
+    //Passing test cases for TDD
     @Test
     public void total_order_price_of_added_menu_items_should_not_be_zero() {
         List<String> items = new ArrayList<String>();
