@@ -2,6 +2,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,6 +19,8 @@ class RestaurantTest {
         restaurant = new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
         restaurant.addToMenu("Sweet corn soup",119);
         restaurant.addToMenu("Vegetable lasagne", 269);
+        restaurant.addToMenu("Vegetable pizza", 300);
+        restaurant.addToMenu("Red pasta", 200);
     }
     //>>>>>>>>>>>>>>>>>>>>>>>>>OPEN/CLOSED<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     //-------FOR THE 2 TESTS BELOW, YOU MAY USE THE CONCEPT OF MOCKING, IF YOU RUN INTO ANY TROUBLE
@@ -55,6 +59,25 @@ class RestaurantTest {
         assertThrows(itemNotFoundException.class,
                 ()->restaurant.removeFromMenu("French fries"));
     }
+
+    //<<<<<<<<<<<<TDD>>>>>>>>>>>>>
+    //Failing test cases for TDD
+    @Test
+    public void total_order_price_of_added_menu_items_should_not_be_zero() {
+        List<String> items = new ArrayList<String>();
+        items.add("Sweet corn soup");
+        items.add("Red pasta");
+        assertNotEquals(0, restaurant.totalOrderCost(items));
+    }
+
+    @Test
+    public void total_added_items_price_should_match_with_actual_items_price () {
+        List<String> items = new ArrayList<String>();
+        items.add("Sweet corn soup");
+        items.add("Red pasta");
+        assertEquals(319, restaurant.totalOrderCost(items));
+    }
+    //<<<<<<<<<<<<TDD>>>>>>>>>>>>>
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 }
